@@ -1,0 +1,15 @@
+bin
+*.o
+*.obj
+makefile_*
+mechascribe_bin_*
+res/freetype
+res/harfbuzz
+res/hydraquill
+res/libraqm
+res/libspng
+res/noto_pack
+res/sheenbidi
+res/zstd
+valgrind.log
+drmemory.log

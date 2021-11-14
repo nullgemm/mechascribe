@@ -1,0 +1,3 @@
+[submodule "res/cifra"]
+	path = res/cifra
+	url = https://github.com/ctz/cifra.git
