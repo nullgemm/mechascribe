@@ -27,8 +27,8 @@ Disadvantages of this approach:
    Sadly, the best font rendering libraries available today are simultaneously
    proprietary, patent-encumbered, and outrageously expansive.
    Freetype is a qualitative, open source and feature-complete library.
-   It is also well-established, cross-platform, fast, and can even
-   generate Multi-Channel SDF for use on GPU with pixel shaders.
+   It is also well-established, cross-platform, fast, and can even render
+   SDF representations of the glyphs for use on GPU with pixel shaders.
  - Hydraquill (Noto distribution)
    The first step to supporting as much scripts as possible consists in
    gathering a set of fonts covering all the required glyphs. The Noto
