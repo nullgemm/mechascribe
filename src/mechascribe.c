@@ -286,6 +286,9 @@ enum mechascribe_error mechascribe_set_text(
 
 	while (len > (utf8 - input))
 	{
+		// several optimized utf-8 decoders exist, but do not handle complex
+		// situations very well like when invalid codepoints are encountered
+		// so we prefer using the naive but robust approach instead
 		if (0xf0 == (0xf8 & utf8[0]))
 		{
 			*utf32 =
