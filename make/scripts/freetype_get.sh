@@ -4,7 +4,7 @@
 cd "$(dirname "$0")" || exit
 cd ../..
 
-version="2.11.0"
+version="2.11.1"
 
 echo "[mechascribe script] downloading freetype v$version source release"
 curl -L "https://download.savannah.gnu.org/releases/freetype/freetype-$version.tar.xz" -o \

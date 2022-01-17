@@ -4,7 +4,7 @@
 cd "$(dirname "$0")" || exit
 cd ../..
 
-version="2.9.0"
+version="3.2.0"
 
 echo "[mechascribe script] downloading harfbuzz v$version source release"
 curl -L "https://github.com/harfbuzz/harfbuzz/releases/download/$version/harfbuzz-$version.tar.xz" -o \

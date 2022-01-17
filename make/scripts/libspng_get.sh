@@ -4,7 +4,7 @@
 cd "$(dirname "$0")" || exit
 cd ../..
 
-version="0.7.0"
+version="0.7.1"
 
 echo "[mechascribe script] downloading libspng v$version source release"
 curl -L "https://github.com/randy408/libspng/archive/refs/tags/v$version.zip" -o \

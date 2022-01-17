@@ -4,12 +4,14 @@
 cd "$(dirname "$0")" || exit
 cd ../..
 
-echo "[mechascribe script] downloading libraqm master branch zip"
-curl -L "https://github.com/HOST-Oman/libraqm/archive/refs/heads/master.zip" -o \
-res/libraqm.zip
+version="0.8.0"
+
+echo "[mechascribe script] downloading libraqm v$version source release"
+curl -L "https://github.com/HOST-Oman/libraqm/releases/download/v$version/raqm-$version.tar.xz" -o \
+res/libraqm.tar.xz
 
 cd res || exit
-unzip libraqm.zip
+tar -xf libraqm.tar.xz
 
-rm libraqm.zip
-mv libraqm-master libraqm
+rm libraqm.tar.xz
+mv "raqm-$version" libraqm
