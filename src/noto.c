@@ -417,6 +417,13 @@ enum mechascribe_error mechascribe_prepare_fonts(
 		return MECHASCRIBE_ERROR_FONT_LIST;
 	}
 
+	// fail if no emoji font was set
+	if ((ctx->font_emoji.font_path == NULL) || (ctx->font_emoji.scaler == NULL))
+	{
+		free(ctx->font_fallback_list);
+		return MECHASCRIBE_ERROR_FONT_EMOJI;
+	}
+
 	return MECHASCRIBE_ERROR_OK;
 }
 

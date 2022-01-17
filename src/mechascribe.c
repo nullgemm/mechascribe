@@ -151,6 +151,8 @@ void mechascribe_init_errors(char** msg)
 		"failed font integrity check";
 	msg[MECHASCRIBE_ERROR_FONT_LIST] =
 		"could not load some fonts";
+	msg[MECHASCRIBE_ERROR_FONT_EMOJI] =
+		"could not load emoji font";
 	msg[MECHASCRIBE_ERROR_FONT_UNPACK] =
 		"could not unpack some fonts";
 	msg[MECHASCRIBE_ERROR_FONT_LASTRESORT] =
@@ -194,8 +196,15 @@ void mechascribe_free(
 	struct mechascribe_font_node* node = ctx->font_list;
 	struct mechascribe_font_node* tmp;
 
-	free(ctx->font_emoji.font_path);
-	free(ctx->font_emoji.scaler);
+	if (ctx->font_emoji.font_path != NULL)
+	{
+		free(ctx->font_emoji.font_path);
+	}
+
+	if (ctx->font_emoji.scaler != NULL)
+	{
+		free(ctx->font_emoji.scaler);
+	}
 
 	while (node != NULL)
 	{
