@@ -194,6 +194,9 @@ void mechascribe_free(
 	struct mechascribe_font_node* node = ctx->font_list;
 	struct mechascribe_font_node* tmp;
 
+	free(ctx->font_emoji.font_path);
+	free(ctx->font_emoji.scaler);
+
 	while (node != NULL)
 	{
 		tmp = node->next;
