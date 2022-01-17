@@ -127,17 +127,26 @@ enum hydraquill_error path_list(
 
 	if (node == NULL)
 	{
-		// create a font node and save it as the new beginning of the main list
-		node = malloc(sizeof (struct mechascribe_font_node));
-
-		if (node == NULL)
+		if (strcmp(font_name, ctx->font_emoji_name) == 0)
 		{
-			return HYDRAQUILL_ERROR_ALLOC;
+			node = &(ctx->font_emoji);
+			node->font_path = font_path;
+			node->next = NULL;
 		}
+		else
+		{
+			// create a font node and save it as the new beginning of the main list
+			node = malloc(sizeof (struct mechascribe_font_node));
 
-		node->font_path = font_path;
-		node->next = ctx->font_list;
-		ctx->font_list = node;
+			if (node == NULL)
+			{
+				return HYDRAQUILL_ERROR_ALLOC;
+			}
+
+			node->font_path = font_path;
+			node->next = ctx->font_list;
+			ctx->font_list = node;
+		}
 	}
 
 	// initialize common node fields
@@ -355,6 +364,7 @@ enum mechascribe_error path_create(const char* path_out)
 enum mechascribe_error mechascribe_prepare_fonts(
 	struct mechascribe* ctx,
 	const char* font_folder,
+	const char* font_emoji_name,
 	const char** font_fallback_name_list,
 	size_t font_fallback_count)
 {
@@ -386,6 +396,7 @@ enum mechascribe_error mechascribe_prepare_fonts(
 		font_fallback_count * (sizeof (struct mechascribe_font_node)));
 
 	// temporarily save the special font info
+	ctx->font_emoji_name = font_emoji_name;
 	ctx->font_fallback_name_list = font_fallback_name_list;
 	ctx->font_fallback_count = font_fallback_count;
 
@@ -396,6 +407,7 @@ enum mechascribe_error mechascribe_prepare_fonts(
 		ctx);
 
 	// reset the saved special font info as soon as possible
+	ctx->font_emoji_name = NULL;
 	ctx->font_fallback_name_list = NULL;
 
 	// check for errors afterwards

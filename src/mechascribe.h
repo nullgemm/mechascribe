@@ -91,6 +91,7 @@ void mechascribe_free(
 enum mechascribe_error mechascribe_prepare_fonts(
 	struct mechascribe* ctx,
 	const char* font_folder,
+	const char* font_emoji_name,
 	const char** font_fallback_name_list,
 	size_t font_fallback_count);
 

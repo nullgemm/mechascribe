@@ -196,9 +196,10 @@ int main(void)
 		return 1;
 	}
 
+	const char* emoji_font = "Twemoji.ttf";
+
 	const char* fallback_fonts[] =
 	{
-		"Twemoji.ttf",
 		"NotoSansSymbols2-Regular.ttf",
 		"NotoSansSymbols-Regular.ttf",
 		"LastResortHE-Regular.ttf",
@@ -208,6 +209,7 @@ int main(void)
 		mechascribe_prepare_fonts(
 			mechascribe,
 			"noto",
+			emoji_font,
 			fallback_fonts,
 			(sizeof (fallback_fonts)) / (sizeof (char*)));
 
@@ -233,6 +235,7 @@ int main(void)
 				mechascribe_prepare_fonts(
 					mechascribe,
 					"noto",
+					emoji_font,
 					fallback_fonts,
 					(sizeof (fallback_fonts)) / (sizeof (char*)));
 

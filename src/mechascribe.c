@@ -230,6 +230,9 @@ void mechascribe_set_font_height(
 {
 	struct mechascribe_font_node* node = ctx->font_list;
 
+	ctx->font_emoji.scaler->height = font_height;
+	ctx->font_emoji.scaler->width = font_height;
+
 	while (node != NULL)
 	{
 		node->scaler->height = font_height;
@@ -328,9 +331,25 @@ enum mechascribe_error mechascribe_set_text(
 		glyph = 0;
 
 		// search for the character's glyph in the last font
-		// we used unless this font was not unicode's lastresort
+		// we used unless this font was unicode's lastresort
 		if (fallback == false)
 		{
+			glyph =
+				FTC_CMapCache_Lookup(
+					ctx->freetype_charmap_cache,
+					node_tmp,
+					-1,
+					*utf32);
+		}
+
+		// always search in the emoji font first
+		// we have to to this to work around bugs...
+		if (glyph == 0)
+		{
+			fallback = false;
+			node_last = NULL;
+			node_tmp = &(ctx->font_emoji);
+
 			glyph =
 				FTC_CMapCache_Lookup(
 					ctx->freetype_charmap_cache,

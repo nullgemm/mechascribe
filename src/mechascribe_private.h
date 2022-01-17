@@ -43,10 +43,12 @@ struct mechascribe_font_range
 struct mechascribe
 {
 	// main font list > emoji font > last resort font
+	struct mechascribe_font_node font_emoji;
 	struct mechascribe_font_node* font_list;
 	struct mechascribe_font_node* font_fallback_list;
 
 	// font loading helpers
+	const char* font_emoji_name;
 	const char** font_fallback_name_list;
 	size_t font_fallback_count;
 

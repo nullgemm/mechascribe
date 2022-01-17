@@ -695,7 +695,7 @@ static const struct eat_glass_sentence eat_glass_list[] =
 			" "
 			"🏖️"
 			" "
-			"⏩"
+			"➡"
 			" "
 			"❌"
 			" "
