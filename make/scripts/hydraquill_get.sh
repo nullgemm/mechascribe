@@ -4,7 +4,7 @@
 cd "$(dirname "$0")" || exit
 cd ../..
 
-version="v0.3.3"
+version="v0.3.4"
 
 echo "[mechascribe script] downloading hydraquill $version binary release"
 curl -L "https://github.com/nullgemm/hydraquill/releases/download/$version/hydraquill_bin_$version.zip" -o \
